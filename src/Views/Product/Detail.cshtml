@@ -1,0 +1,20 @@
+﻿@model  DNA.Example.ProductCatalog.Models.Product
+@{
+    Layout = "~/views/shared/_dashboard.cshtml";
+    ViewBag.Title = "Product detail";
+    ViewBag.ReturnUrl = Url.SolutionAction("ProductCatalog", "List", "Product", Culture, WebName);
+}
+<div class="d-form">
+    <div class="d-field">
+        @Html.LabelFor(m => m.Name)
+        @Html.DisplayTextFor(m => m.Name)
+    </div>
+    <div class="d-field">
+        @Html.LabelFor(m => m.Description)
+        @Html.DisplayTextFor(m => m.Description)
+    </div>
+    <div class="d-field">
+        @Html.LabelFor(m => m.Price)
+        @Html.DisplayTextFor(m => m.Price)
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@model  DNA.Example.ProductCatalog.Models.Product
+<div class="d-form">
+    <div class="d-field">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new
+   {
+       placeholder = "Enter the product name",
+       data_val = "true",
+       data_val_required = "The product name is required."
+   })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="d-field">
+        @Html.LabelFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description, new { placeholder = "Enter the product description" })
+       @Html.ValidationMessageFor(m => m.Description)
+    </div>
+    <div class="d-field">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new
+   {
+       placeholder = "Enter the product unit price",
+       data_val = "true",
+       data_val_required = "The product name is required."
+   })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+</div>

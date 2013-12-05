@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DNA.Example.ProductCatalog.Models.Product>
+@{
+    Layout = "~/views/shared/_dashboard.cshtml";
+}
+@section Navs{
+    <a data-role="button" data-icon-left="d-icon-plus-4" title="New product" href="@Url.SolutionAction("ProductCatalog", "New", "Product", Culture, WebName)"></a>
+}
+@if (Model==null || Model.Count()==0){
+    <p class="notes">There no product found.Please click the "+" button on the top left to create new one.</p>
+}
+else {
+<ul data-role="listview" data-display="mobile-list">
+    @foreach (var product in Model)
+    {
+        <li data-counter="@product.Price.ToString("C")">
+            <a href="@Url.SolutionAction("ProductCatalog", "Edit", "Product", Culture, WebName, new { id = product.ID })">
+                <h4>@product.Name</h4>
+                <p>@product.Description</p>
+            </a>
+        </li>
+    }
+</ul>
+}

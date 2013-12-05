@@ -1,0 +1,26 @@
+﻿@using DNA.Web.ServiceModel
+@Html.Widget().Content(@<text>
+@{
+    var storage = AppModel.Get().CurrentWeb.Storage;
+    var products = storage.All<DNA.Example.ProductCatalog.Models.Product>();
+}
+@if (products == null || products.Count() == 0)
+{
+    <p class="notes">There no product found.</p>
+}
+else
+{
+    <ul data-role="listview" data-display="mobile-list" data-inset="true">
+        @foreach (var product in products)
+        {
+            <li data-counter="@product.Price.ToString("C")">
+                <a href="@Url.SolutionAction("ProductCatalog", "Edit", "Product", Culture, AppModel.Get().CurrentWeb.Name, new { id = product.ID })">
+                    <h4>@product.Name</h4>
+                    <p>@product.Description</p>
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+</text>).GetHtml()

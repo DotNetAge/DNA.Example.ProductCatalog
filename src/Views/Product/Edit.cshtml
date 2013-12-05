@@ -1,0 +1,22 @@
+﻿@model  DNA.Example.ProductCatalog.Models.Product
+@{
+    Layout = "~/views/shared/_dashboard.cshtml";
+    ViewBag.Title = "Edit product detail";
+    ViewBag.ReturnUrl = Url.SolutionAction("ProductCatalog", "List", "Product", Culture, WebName);
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    Html.RenderPartial("~/Views/Product/_Form.cshtml");
+    <div style="text-align: center;">
+        <button data-default="true" data-inline="false">@Resources.Commons.Save</button>
+        <a data-ajax="true" 
+            data-ajax-confirm="Are you sure delete this product ?"
+            data-ajax-method="post"
+            data-ajax-url="@Url.SolutionAction("ProductCatalog", "Delete", "Product", Culture, WebName, new { id = Model.ID })"
+            data-ajax-begin="$.loading();"
+            data-ajax-success="location='@Url.SolutionAction("ProductCatalog", "List", "Product", Culture, WebName)'"
+            data-ajax-complete="$.loading('hide');"
+            data-role="button" data-inline="false">@Resources.Commons.Delete</a>
+    </div>
+}
